@@ -17,7 +17,7 @@ const Navbar = () => {
         </div>
         <div id="navlinks">
           <Link className='link' to='/'>Home</Link>
-          <Link className='link' to='/cities'>Cities</Link>
+          <Link className='link' to='/plants'>Plants</Link>
           <Link className='link' to='/mygreenhouse'>My Greenhouse</Link>
           <Link className='link' to='/logandReg'>Login/Register</Link>
           <Link className='link' to='/logout' onClick={logout}>Logout</Link>

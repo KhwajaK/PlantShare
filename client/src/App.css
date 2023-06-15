@@ -94,3 +94,18 @@ a:hover {
 #form_decor{
   margin-bottom: 5px;
 }
+
+#gh_main, #plants_list{
+  font-family: 'Alta', sans-serif;
+  margin-left: 25%;
+  padding: 1px 16px;
+  height: 1000px;
+  overflow: hidden;
+}
+
+#gh_table, #plants_table{
+  border: slategrey 1px solid;
+  overflow-y: auto;
+  scroll-behavior: auto;
+  height: 400px;
+}

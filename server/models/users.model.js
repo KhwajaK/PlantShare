@@ -29,15 +29,48 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "City is required"],
         enum: ['Austin', 'Boston', 'Denver','Los Angeles', 'San Diego', 'San Francisco', 'Seattle', 'Washington DC', 'Las Vegas'],
-    },
-    posts: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
-    }],
-    comments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-    }]
+    }
+    // favoritePlants:[{
+    //     common_name: {
+    //         type: String,
+    //         required: [true, "Common name is required"],
+    //     },
+    //     scientific_name: {
+    //         type: [String],
+    //         required: true
+    //     },
+    //     watering: {
+    //         type: String,
+    //         required: true
+    //     },
+    //     sunlight: {
+    //         type: [String],
+    //         required: true
+    //     },
+    //     propagation: {
+    //         type: [String],
+    //         required: true
+    //     },
+    //     hardiness: {
+    //         min: {
+    //         type: String,
+    //         required: true
+    //         },
+    //         max: {
+    //         type: String,
+    //         required: true
+    //         }
+    //     }
+    // }],
+    // favoritePlants: [],
+    // posts: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Post'
+    // }],
+    // comments: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Comment'
+    // }]
 }, {timestamps: true});
 
 UserSchema.virtual('confirmPassword')

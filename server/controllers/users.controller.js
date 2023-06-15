@@ -69,6 +69,57 @@ module.exports = {
         }
     },
 
+    // userPlants: async (req, res) => {
+    //     try {
+    //         const userId = req.params._id;
+    //         const { common_name, scientific_name, watering, sunlight, propagation, hardiness } = req.body;
+    //         const user = await 
+    //         User.findById(userId);
+    //         if (!user) {
+    //             res.status(400).json({message: "User not found"});
+    //         }
+    //         const existingPlant = user.favorites.find(plant => plant.common_name === common_name);
+    //         if (existingPlant) {
+    //             res.status(400).json({message: "Plant already in favorites"});
+    //         }
+    //         const newPlant = {
+    //             common_name,
+    //             scientific_name,
+    //             watering,
+    //             sunlight,
+    //             propagation,
+    //             hardiness
+    //         };
+    //         user.favoritePlants.push(newPlant);
+    //         await user.save();
+
+    //         res.json({message:'Plant added to favorites', user});
+    //     } catch (err) {
+    //         res.status(500).json({err: err.message});
+    //     }
+    // },
+    // getUserFavorites: async (req, res) => {
+    //     try {
+    //         const userId = req.params._id;
+    //         const user = await User.findById(userId).populate('favoritePlants');
+    //         if (!user) {
+    //             res.status(400).json({message: "User not found"});
+    //         }
+    //         const favoritePlants = user.favoritePlants.map(plant => ({
+    //             common_name: plant.common_name,
+    //             scientific_name: plant.scientific_name,
+    //             watering: plant.watering,
+    //             sunlight: plant.sunlight,
+    //             propagation: plant.propagation,
+    //             hardiness: plant.hardiness
+    //         }))
+    //         res.json({message: 'Success', favoritePlants});
+    //     } catch (err) {
+    //         console.log(err)
+    //         res.status(500).json({err: err.message});
+    //     }
+    // },
+
     updateUser: async (req, res) => {
         try{
         console.log('updating user: ', req.body)
@@ -88,17 +139,17 @@ module.exports = {
             .catch(err => res.status(400).json(err))
     },
 
-    getAllUsers: async (req, res) => {
-        console.log('getting all users')
-        User.find()
-            .then(e => res.json(e))
-            .catch(err => res.status(400).json(err))
-    },
+    // getAllUsers: async (req, res) => {
+    //     console.log('getting all users')
+    //     User.find()
+    //         .then(e => res.json(e))
+    //         .catch(err => res.status(400).json(err))
+    // },
 
-    getUserByCity: async (req, res) => {
-        console.log('getting all users by city')
-        User.find({ city: req.params.city})
-            .then(e => res.json(e))
-            .catch(err => res.status(400).json(err))
-    }
+    // getUserByCity: async (req, res) => {
+    //     console.log('getting all users by city')
+    //     User.find({ city: req.params.city})
+    //         .then(e => res.json(e))
+    //         .catch(err => res.status(400).json(err))
+    // }
 }
