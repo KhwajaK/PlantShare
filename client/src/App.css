@@ -95,7 +95,7 @@ a:hover {
   margin-bottom: 5px;
 }
 
-#gh_main, #plants_list{
+#gh_main, #plants_list, #plants_form{
   font-family: 'Alta', sans-serif;
   margin-left: 25%;
   padding: 1px 16px;
@@ -109,3 +109,4 @@ a:hover {
   scroll-behavior: auto;
   height: 400px;
 }
+

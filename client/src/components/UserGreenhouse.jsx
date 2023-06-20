@@ -22,11 +22,11 @@ const UserGreenhouse = () => {
   useEffect(() => {
     const fetchFavoritePlants = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/FavoritePlants', {withCredentials: true});
+        const res = await axios.get('http://localhost:8000/api/FavoritePlants/:id', {withCredentials: true});
         const favoritePlantsData = res.data;
         const fetchPlantDetails = favoritePlantsData.map(async (plant) => {
           try {
-            const plantResponse = await axios.get('https://perenual.com/api/species-list?page=1&key=sk-50Lf648901844f1fa1249');
+            const plantResponse = await axios.get('https://localhost:8000/api/plants');
             return plantResponse.data;
           } catch (err) {
             console.log('failed to fetch details for plants');
@@ -42,21 +42,6 @@ const UserGreenhouse = () => {
     fetchFavoritePlants();
   }, []);
 
-  // useEffect(() => {
-  //   axios.get(`https://perenual.com/api/species/details/${id}?key=sk-50Lf648901844f1fa1249`)
-  //     .then(res => {
-  //       console.log(res);
-  //       console.log(res.data);
-  //       setUserPlants({
-  //         common_name: res.data.common_name,
-  //         scientific_name: res.data.scientific_name,
-  //         watering: res.data.watering,
-  //         sunlight: res.data.sunlight,
-  //         propagation: res.data.propagation,
-  //         hardiness: res.data.hardiness,
-  //       }) })
-  //     .catch(err => console.log(err));
-  // }, [id]);
 
   return (
     <div id="gh_main">
@@ -66,24 +51,14 @@ const UserGreenhouse = () => {
           <thead>
             <tr>
               <th scope="col">Common Name</th>
-              <th scope="col">Scientific Name</th>
-              <th scope="col">Watering</th>
-              <th scope="col">Sunlight</th>
-              <th scope="col">Propagation</th>
-              <th scope="col">Hardiness</th>
+              <th scope="col">Details</th>
             </tr>
           </thead>
           <tbody>
             {favoritePlants.map((plant) => (
               <tr key={plant._id}>
                 <td>{plant.common_name}</td>
-                <td>{plant.scientific_name}</td>
-                <td>{plant.watering}</td>
-                <td>{plant.sunlight.join(', ')}</td>
-                <td>{plant.propagation.join(', ')}</td>
-                <td>
-                  Min: {plant.hardiness.min} - Max: {plant.hardiness.max}
-                </td>
+                <td>{plant.details}</td>
               </tr>
             ))}
           </tbody>

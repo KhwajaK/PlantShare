@@ -120,6 +120,12 @@ module.exports = {
     //     }
     // },
 
+    userFavorite: async (req, res) => {
+        User.updateOne(
+            { _id: user._id },
+            { $push: { favorites: req.params.id } }
+        )
+    },
     updateUser: async (req, res) => {
         try{
         console.log('updating user: ', req.body)
