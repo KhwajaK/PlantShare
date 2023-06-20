@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import React from 'react'
 import PlantForm from './PlantForm'
 
 const Edit = () => {
 
 
     return (
-        <div>
+        <div className='container'>
+            <br/>
+            <br/>
             <PlantForm />
         </div>
     )

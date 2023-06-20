@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import PlantForm from './PlantForm'
 
 const Plants = ({user}) => {
@@ -39,8 +39,8 @@ const Plants = ({user}) => {
                         </tr>
                     </thead>
                     <tbody>
-                { Array.isArray(plantList) && plantList.map ((plant, i) => (
-                        <tr key={i}>
+                {Array.isArray(plantList) && plantList.sort((a, b) => a.common_name.localeCompare(b.common_name)).map((plant, i) => (
+                    <tr key={i}>
                             <td>{plant.common_name}</td>
                             <td>{plant.details}</td>                            
                             <td>
@@ -57,6 +57,15 @@ const Plants = ({user}) => {
                 <PlantForm plantList={plantList} setPlantList={setPlantList} />
         </div>
     )
-                }
+}
 
 export default Plants
+
+
+
+
+
+
+
+// mapped but not sorted
+/* { Array.isArray(plantList) && plantList.map ((plant, i) => (  */

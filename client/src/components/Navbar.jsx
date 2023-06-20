@@ -1,12 +1,17 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
+const navigate = useNavigate()
+
   const logout = () => {
     axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        navigate('/logandReg')
+})
       .catch(err => console.log(err)) 
   }
 

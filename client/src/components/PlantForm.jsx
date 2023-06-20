@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const PlantForm = ({plantList, setPlantList}) => {
     const {id} = useParams()
@@ -39,8 +39,12 @@ const PlantForm = ({plantList, setPlantList}) => {
             })
             .catch(err => {
                 setSuccess(false)
-                setErrors(err.response.data.errors)
-                console.log("error in create:" + err.response.data.errors)
+                setErrors(err.response.data.error.errors)
+                // console.log("error in create:" + err.response.data.errors)
+                // console.log("submit error------------")
+                // console.log(err)
+                // console.log(plant.common_name)
+                // console.log(err.response.data.error.message)
             })
         }
 
@@ -52,19 +56,23 @@ const PlantForm = ({plantList, setPlantList}) => {
                 console.log(res.data)
                 navigate('/plants')
             })
-            .catch(err => console.log(err))
+            .catch(err => {console.log(err)
+            setErrors(err.response.data.error.errors)})
     }
 
+// response.data.error.errors.common_name.message
 
     return (
     <div>
         <div id="plants_form">
         <form onSubmit={(id) ? handleUpdate : handleSubmit}>
-            <input placeholder='Common Name' type="text" name="common_name" onChange={handleChange} value={plant.common_name} />
-            <input placeholder='details' type="text" name="details" onChange={handleChange} value={plant.details}/>
-            <input type="submit" value="Submit" />
+            {errors.common_name ? <p className='text-danger'>{errors.common_name.message}</p>: null}
+            <input id="form_decor" className="form-control" placeholder='Common Name' type="text" name="common_name" onChange={handleChange} value={plant.common_name} />
+            {errors.details ? <p className='alert danger'>{errors.details.message}</p>: null}
+            <input id="form_decor" className="form-control" placeholder='details' type="text" name="details" onChange={handleChange} value={plant.details}/>
+            <input id="form_decor" className="button" type="submit" value="Submit" />
         </form>
-        </div>  
+        </div>
     </div>
     )
 }

@@ -14,6 +14,7 @@ const PlantSchema = new mongoose.Schema({
     creator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+        // required: [true, "Please log in to add or edit a plant"]
     }
 }, {timestamps: true});
 
